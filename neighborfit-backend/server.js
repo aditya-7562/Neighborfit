@@ -12,11 +12,11 @@ app.use(express.json());
 let neighborhoods = [];
 
 function loadNeighborhoodsFromCSV() {
-  neighborhoods = []; // Clear in case of reload
+  neighborhoods = []; 
   fs.createReadStream('data/bangalore_neighborhoods.csv')
     .pipe(csv())
     .on('data', (row) => {
-      // Dynamically identify the name key (handles BOM issues)
+
       const nameKey = Object.keys(row).find(k => k.toLowerCase().includes('name'));
       const scores = {};
 

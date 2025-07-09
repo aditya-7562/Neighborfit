@@ -3,7 +3,6 @@ import axios from 'axios';
 import { motion, AnimatePresence } from 'framer-motion';
 import './App.css';
 
-// Components
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
@@ -45,13 +44,12 @@ export default function App() {
     setError(null);
     
     try {
-      const response = await axios.post('http://localhost:5000/match', {
+      const response = await axios.post('https://neighborfit-backend-yyyg.onrender.com/match', {
         preferences: selectedPrefs,
         profession
       });
       setResults(response.data);
       setShowResults(true);
-      // Scroll to results section
       document.getElementById('results-section').scrollIntoView({ behavior: 'smooth' });
     } catch (error) {
       setError('Error fetching results. Is the server running?');
@@ -66,7 +64,6 @@ export default function App() {
     document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
   };
 
-  // Track scroll position to update active section
   useEffect(() => {
     const handleScroll = () => {
       const sections = ['home', 'about', 'preferences', 'results-section'];
